@@ -3,10 +3,10 @@ import Button from "../components/Button";
 export function Hero(){
 
     const icons = [
-    {id:1, icon:"/icons/expresso.png",alt:"Cup"},
-    {id:2, icon:"/icons/expresso.png",alt:"Beans"},
-    {id:3, icon:"/icons/expresso.png",alt:"Coffee"},
-    {id:4, icon:"/icons/expresso.png",alt:"Coffee Cup"},
+    {id:1, icon:"/icons/icon3.png",alt:"Cup"},
+    {id:2, icon:"/icons/icon4.png",alt:"Beans"},
+    {id:3, icon:"/icons/icon2.png",alt:"Coffee"},
+    {id:4, icon:"/icons/icon1.png",alt:"Coffee Cup"},
   ];
 
 
@@ -20,7 +20,7 @@ export function Hero(){
                 </div>
                 <div className="space-y-6">
                     <div>
-                    <Button text="View Menu" background="var(--color-coffee)" height="48px" width="128px"/>
+                    <Button text="View Menu" height="48px" width="128px" variant="gradient"/>
                 </div>
 
                 <div className="flex space-x-6 pt-4">

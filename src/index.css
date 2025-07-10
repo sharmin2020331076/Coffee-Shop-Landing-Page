@@ -1,9 +1,9 @@
+
 @import "tailwindcss";
 
 :root{
     --color-coffee: #361402;
-    --color-grad: linear-gradient(90deg, #361402 0%, #7b3012 100%);
-    --color-icon: var(--color-coffee);
+    --color-grad: linear-gradient(90deg, #361402 0%, #7e2807 50%,#c24a1a 100%);
 }
 
 .bg-grad {
@@ -18,6 +18,4 @@
     color: var(--color-coffee);
 }
 
-.theme-icon{
-  color: var(--color-coffee);
-}
+
