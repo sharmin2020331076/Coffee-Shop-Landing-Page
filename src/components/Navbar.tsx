@@ -4,7 +4,7 @@ import Button from "./Button";
 
 export function Navbar() {
     return(
-        <div className="fixed w-full flex h-20 backdrop-blur-2xl pr-8 pl-8 lg:pr-16 lg:pl-16 pt-4 pb-4 z-50 justify-between items-center">
+        <div className="hidden fixed w-full md:flex h-20 backdrop-blur-2xl pr-8 pl-8 lg:pr-16 lg:pl-16 pt-4 pb-4 z-50 justify-between items-center">
             <div className="flex flex-col space-y-0">
                 <div className="flex space-x-1 items-center">
                     <h1 className="font-bold text-2xl text-coffee">Flavored</h1>

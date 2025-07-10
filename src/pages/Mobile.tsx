@@ -101,7 +101,7 @@ export function Mobile(){
             </div>
 
             <div className="flex justify-between items-center pr-4">
-            <div className="flex justify-between items-center space-x-6 p-6">
+            <div className="flex justify-between items-center space-x-6 p-6 mb-5">
             <div className="bg-white/50 rounded-2xl shadow-2xl w-12 h-8 flex justify-center items-center text-sm p-2">$3.50</div>
             <div className="bg-white/50 rounded-2xl shadow-2xl w-12 h-8 flex justify-center items-center text-sm p-2 ">
                 <img src="/icons/heart.png" className="md:w-4 md:h-4 w-2 h-2 "/>

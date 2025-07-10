@@ -11,12 +11,12 @@ export function Hero(){
 
 
     return(
-        <div className="pt-20">
-            <div className="grid lg:grid-cols-[60%_40%] grid-cols-1 items-center">
-                <div className="p-8 lg:p-16 space-y-8 flex flex-col">
+        <div className="">
+            <div className="grid lg:grid-cols-2 grid-cols-1 items-center">
+                <div className="lg:pl-16 pl-8 pt-8 lg:pt-0 space-y-8 flex flex-col">
                 <div className="space-y-2">
-                    <h1 className="text-5xl md:text-6xl lg:text-7xl text-coffee font-bold font-sans">Coffee</h1>
-                    <h1 className="text-5xl md:text-6xl lg:text-7xl text-coffee font-bold font-sans">The Best For You</h1>
+                    <h1 className="text-5xl md:text-5xl lg:text-7xl text-coffee font-bold font-sans">Coffee</h1>
+                    <h1 className="text-5xl md:text-5xl lg:text-7xl text-coffee font-bold font-sans">The Best For You</h1>
                 </div>
                 <div className="space-y-6">
                     <div>
@@ -25,8 +25,8 @@ export function Hero(){
 
                 <div className="flex space-x-6 pt-4">
                 {icons.map(icon => (
-                    <div key={icon.id} className="flex items-center justify-center h-12 w-12 rounded-2xl bg-white/50 shadow-2xl">
-                    <img src={icon.icon} alt={icon.alt} className="w-8 h-8 " />
+                    <div key={icon.id} className="flex items-center justify-center h-10 w-10 rounded-2xl bg-white/50 shadow-2xl">
+                    <img src={icon.icon} alt={icon.alt} className="w-6 h-6  " />
                     </div>
                 ))}
                 </div>

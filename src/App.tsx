@@ -1,5 +1,8 @@
 import { Navbar } from "./components/Navbar";
+import { Mobile } from "./pages/Mobile";
+import { Cappuccino } from "./pages/Cappuccino";
 import { Cart } from "./pages/Cart";
+import { Footer } from "./pages/Footer";
 import { Hero } from "./pages/Hero";
 
 
@@ -13,13 +16,11 @@ function App(){
         <div className="w-full min-h-screen bg-yellow-400/10 backdrop-blur-2xl">
         <Hero/>
         <Cart/>
-          
+        <Cappuccino/>
+        <Mobile/>
+        <Footer/>
         </div>
-
         </div>
-
-        
-        
       </main>
   );
 }

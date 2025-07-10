@@ -31,7 +31,7 @@ const Button: React.FC<ButtonProps> = ({
     <button
       onClick={onClick}
       style={style}
-      className={`flex items-center justify-center text-white rounded-full shadow-2xl ${variantClass}`}
+      className={`hover:scale-110 transition cursor-pointer flex items-center justify-center text-white rounded-full shadow-2xl ${variantClass}`}
     >
       {text}
     </button>
