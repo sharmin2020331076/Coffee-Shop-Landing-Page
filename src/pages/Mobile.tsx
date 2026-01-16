@@ -1,139 +1,112 @@
-import Button from "../components/Button";
-import { CoffeeCard2 } from "../components/CoffeeCard";
+import { useState } from "react";
 
 export function Mobile(){
+    const [activeFilter, setActiveFilter] = useState("All");
 
-    const icons = [
-    {id:1, icon:"/icons/icon3.png",alt:"Cup"},
-    {id:2, icon:"/icons/icon4.png",alt:"Beans"},
-    {id:3, icon:"/icons/icon2.png",alt:"Coffee"},
-    {id:4, icon:"/icons/icon1.png",alt:"Coffee Cup"},
-  ];
+    const products = {
+        All: [
+            { id: 1, image: "/photo/dessert1.jpg", name: "Dark Irish Cheesecake", rating: 4, price: 7.99 },
+            { id: 2, image: "/photo/dessert2.jpg", name: "Naked dark chocolate cake", rating: 3, price: 6.99 },
+            { id: 3, image: "/photo/dessert3.jpg", name: "Double Chocolate Fruit cake", rating: 5, price: 8.49 },
+            { id: 4, image: "/photo/dessert4.jpg", name: "Dark Chocolate Cheesecake", rating: 4, price: 7.49 },
+            { id: 5, image: "/photo/cold1.jpg", name: "Iced Cappuccino", rating: 4 ,price: 5.99},
+            { id: 6, image: "/photo/cold2.jpg", name: "Cold Brew Coffee", rating: 3 ,price: 4.99},
+            { id: 7, image: "/photo/cold3.jpg", name: "Iced Latte", rating: 5 , price: 6.49},
+            { id: 8, image: "/photo/cold4.jpg", name: "Iced Americano", rating: 3 , price: 3.99},
+            { id: 9, image: "/photo/hot1.jpg", name: "Espresso", rating: 5 , price: 2.99},
+            { id: 10, image: "/photo/hot2.jpg", name: "Cappuccino", rating: 5 , price: 4.49},
+            { id: 11, image: "/photo/hot3.jpg", name: "Latte", rating: 5 , price: 4.99},
+            { id: 12, image: "/photo/hot4.jpg", name: "Americano", rating: 5 , price: 3.49}
+        ],
+        Desserts: [
+            { id: 1, image: "/photo/dessert1.jpg", name: "Dark Irish Cheesecake", rating: 4 , price: 7.99},
+            { id: 2, image: "/photo/dessert2.jpg", name: "Naked dark chocolate cake", rating: 3 , price: 6.99},
+            { id: 3, image: "/photo/dessert3.jpg", name: "Double Chocolate Fruit cake", rating: 5 , price: 8.49},
+            { id: 4, image: "/photo/dessert4.jpg", name: "Dark Chocolate Cheesecake", rating: 4 , price: 7.49}
+        ],
+        "Cold Coffee": [
+            { id: 1, image: "/photo/cold1.jpg", name: "Iced Cappuccino", rating: 4 , price: 5.99},
+            { id: 2, image: "/photo/cold2.jpg", name: "Cold Brew Coffee", rating: 3 , price: 4.99},
+            { id: 3, image: "/photo/cold3.jpg", name: "Iced Latte", rating: 5 , price: 6.49},
+            { id: 4, image: "/photo/cold4.jpg", name: "Iced Americano", rating: 3 , price: 3.99}
+        ],
+        "Hot Coffee": [
+            { id: 1, image: "/photo/hot1.jpg", name: "Espresso", rating: 5 , price: 2.99},
+            { id: 2, image: "/photo/hot2.jpg", name: "Cappuccino", rating: 5 , price: 4.49},
+            { id: 3, image: "/photo/hot3.jpg", name: "Latte", rating: 5 , price: 4.99},
+            { id: 4, image: "/photo/hot4.jpg", name: "Americano", rating: 5 , price: 3.49}
+        ]
+    };
 
-    return<>
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[30%_30%_40%] items-center gap-6 p-8 lg:p-16">
-        <div className="w-full rounded-3xl bg-white/50 space-y-2">
-            <h1 className="text-coffee text-xl font-bold pl-4 pt-2">&lt;</h1>
-            <h1 className="text-coffee text-xl font-bold pl-4">Coffee</h1>
-            <div className="pt-2 pl-3">
-            <Button text="View Menu" height="32px" width="96px" />
+    return (
+        <div className="w-full py-12 px-4 sm:px-8">
+            {/* Top Products Heading */}
+            <h2 className="text-3xl sm:text-4xl font-bold text-coffee text-center mb-8">All The Items We Serve</h2>
+
+            {/* Filter Buttons */}
+            <div className="flex justify-center gap-3 sm:gap-4 mb-8 flex-wrap">
+                {["All", "Desserts", "Cold Coffee", "Hot Coffee"].map((filter) => (
+                    <button
+                        key={filter}
+                        onClick={() => setActiveFilter(filter)}
+                        className={`px-4 sm:px-6 py-2 sm:py-3 rounded-full font-semibold transition-all ${
+                            activeFilter === filter
+                                ? "bg-coffee text-[#f1a437] border-2 border-coffee"
+                                : "bg-white text-coffee border-2 border-coffee"
+                        }`}
+                    >
+                        {filter}
+                    </button>
+                ))}
             </div>
-            <div className="flex justify-between pl-4 pr-4 pt-2 lg:pl-8 lg:pr-8 mb-10 lg:mb-16">
-                {icons.map(icon => (
-                    <div key={icon.id} className="flex items-center justify-center h-7 w-7 lg:h-10 lg:w-10 rounded-xl bg-white/50 shadow-xl">
-                    <img src={icon.icon} alt={icon.alt} className="w-4 h-4 lg:w-6 lg:h-6  " />
+
+            {/* Product Cards Grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+                {products[activeFilter as keyof typeof products].map((product) => (
+                    <div key={product.id} className="bg-white/50 backdrop-blur-3xl rounded-lg overflow-hidden hover:shadow-lg transition-shadow">
+                        {/* Product Image */}
+                        <div className="relative overflow-hidden h-48 sm:h-56">
+                            <img
+                                src={product.image}
+                                alt={product.name}
+                                className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
+                            />
+                        </div>
+
+                        {/* Product Info */}
+                        <div className="p-4 sm:p-5 grid grid-cols-2 items-center">
+                            {/* Star Rating */}
+                            <div className="flex flex-col justify-start">
+                                <div className="flex gap-1 mb-2">
+                                {[...Array(product.rating)].map((_, i) => (
+                                    <svg key={i} className="w-4 h-4 fill-[#fb9200]" viewBox="0 0 20 20">
+                                        <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
+                                    </svg>
+                                ))}
+                                 
+                            </div> 
+
+                            {/* Product Name */}
+                            <h3 className="text-coffee font-semibold text-sm sm:text-base mb-3">{product.name}</h3>
+                            </div>
+
+
+                            <div  className="flex flex-col items-end">
+                                {/* Price Text */}
+                            <span className="text-[#f1a437] font-semibold text-sm sm:text-base mb-2">
+                                    ${product.price.toFixed(2)}
+                                </span>
+                                {/* Cart Icon */}
+                                <span className="mb-3">
+                                    <img src="/icons/cart.png" alt="Cart" height="20" width="20"/>
+                                </span>
+                            </div>
+
+
+                        </div>
                     </div>
                 ))}
-                </div>
-                <div className="flex space-x-2 items-center justify-center p-2">
-                        
-                
-                            <CoffeeCard2
-                                title="Americano"
-                                description="Dark, sleek depth"
-                                price="$3.50"
-                                imageUrl="/icons/americano.png"
-                                 iconUrl={[
-                                    {
-                                    default: "/icons/heart.png",
-                                    active: "/icons/heart-filled.png",
-                                    },
-                                    {
-                                    default: "/icons/cart.png",
-                                    active: "/icons/cart-filled.png",
-                                    },
-                                ]}
-                
-                            />
-                            <CoffeeCard2
-                                title="Cappuccino"
-                                description="Creamy and rich"
-                                price="$3.50"
-                                imageUrl="/icons/cup7.png"
-                                iconUrl={[
-                                    {
-                                    default: "/icons/heart.png",
-                                    active: "/icons/heart-filled.png",
-                                    },
-                                    {
-                                    default: "/icons/cart.png",
-                                    active: "/icons/cart-filled.png",
-                                    },
-                                ]}
-                
-                            />
-                
-                        </div>
-                        <div className="p-2 mt-6 grid grid-cols-[70%_30%]">
-
-                            <div className="bg-white/50 rounded-2xl shadow-2xl p-4">
-                                <h3 className="text-coffee text-[12px] md:text-xs font-bold">Moccaccino</h3>
-                                <p className="md:text-xs text-coffee text-[10px]">Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus, sit.</p>
-                            </div>
-
-                            <div className="">
-                                <img src="/icons/mug1.png" alt="" />
-                            </div>
-                        </div>
-                      <div className="mt-4 p-4">
-                                <div className="bg-coffee rounded-full p-2 flex space-x-12 justify-center items-center">
-                                    <img src="/icons/home.png" alt="" className="md:w-8 md:h-8 w-6 h-6 filter invert brightness-0" />
-                                    <img src="/icons/cart.png" alt="" className="md:w-8 md:h-8 w-6 h-6 filter invert brightness-0"/>
-                                    <img src="/icons/user.png" alt="" className="md:w-8 md:h-8 w-6 h-6 filter invert brightness-0"/>
-                                    <img src="/icons/menu.png" alt="" className="md:w-8 md:h-8 w-6 h-6 filter invert brightness-0"/>
-                                </div>
-                            </div>  
+            </div>
         </div>
-
-        
-        <div className="w-full rounded-3xl bg-white/50">
-
-            <div>
-                <h1 className="text-coffee text-xl font-bold pl-4 pt-2">&lt;</h1>
-            </div>
-            <div className="">
-                <img src="/icons/cup.png"/>
-            </div>
-
-             <div className="p-4">
-                <h3 className="text-coffee text-[20px] font-semibold ">Latte Grand</h3>
-                <p className="text-coffee text-[12px]">Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque expedita temporibus nam consectetur! Blanditiis, laborum animi exercitationem ea possimus impedit optio enim facere asperiores aut quidem! Et harum esse dolore?</p>
-            </div>
-
-            <div className="flex justify-between items-center pr-4">
-            <div className="flex justify-between items-center space-x-6 p-6 mb-5">
-            <div className="bg-white/50 rounded-2xl shadow-2xl w-12 h-8 flex justify-center items-center text-sm p-2">$3.50</div>
-            <div className="bg-white/50 rounded-2xl shadow-2xl w-12 h-8 flex justify-center items-center text-sm p-2 ">
-                <img src="/icons/heart.png" className="md:w-4 md:h-4 w-2 h-2 "/>
-            </div>
-            </div>
-
-            <div className="bg-coffee  rounded-2xl h-10 w-30 p-2 flex items-center justify-between">
-                <div className="text-[12px] text-white">Add to Cart</div>
-                <div className="bg-white/20 rounded-full text-[12px] font-bold text-white w-6 h-6 flex justify-center items-center">
-                <img src="/icons/plus.png" className="md:w-3 md:h-3 w-2 h-2 filter invert brightness-0"/>
-                </div>
-            </div>
-            </div>
-
-        </div>
-
-        <div>
-            <div className="p-6">
-                <h1 className="text-4xl text-coffee font-bold mb-6">App is Available</h1>
-                <p className="text-sm text-coffee ">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores nihil, tempore ab, inventore vero reprehenderit commodi possimus quae necessitatibus veniam reiciendis blanditiis officia! Unde odit tenetur blanditiis, magni ut eos sequi aperiam labore sed cumque maxime porro rerum numquam perspiciatis consectetur natus debitis officia? Officiis dolores illum excepturi laboriosam error!</p>
-            </div>
-            <div className="flex space-x-6 p-6">
-                <div className="bg-white/50 rounded-2xl shadow-2xl w-12 h-12 flex justify-center items-center">
-                    <img src="icons/apple.png" className="w-8 h-8"/>
-                </div>
-            <div className="bg-white/50 rounded-2xl shadow-2xl w-12 h-12 flex justify-center items-center">
-                <img src="icons/play.png" className="w-8 h-8"/>
-            </div>
-            </div>
-            
-        </div>
-    </div>
-    </>
-
+    );
 }

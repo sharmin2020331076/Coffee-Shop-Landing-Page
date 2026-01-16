@@ -1,15 +1,16 @@
 import Button from "../components/Button";
 import { CoffeeCard } from "../components/CoffeeCard";
-//bsolue top- left-1/2 transform -translate-y-1/2
-//absolute bottom-0 left-1/2 transform -translate-y-1/2 -translate-x-1/2
+
 
 export function Cart(){
     return(
-        <div className="w-full min-h-screen pt-20">
-            <div className="grid grid-cols-[60%_40%]">
-            <div className="flex lg:flex-row flex-col md:space-x-12 space-x-0 space-y-32 lg:space-y-0 p-8">
-        
-
+        <div className="w-full min-h-screen space-y-15">
+            <div className=" w-full px-4 sm:px-8 lg:px-16 py-8 sm:py-12 flex flex-col items-center justify-center text-center">
+                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-coffee font-sherif">TOP CATEGORIES</h2>
+                <p className="text-base sm:text-lg lg:text-xl text-coffee font-sans mt-2">Eplore The Recent Most Brought Drinks This Week</p>
+            </div>
+            <div className="pt-8 grid grid-cols-1 lg:grid-cols-[70%_30%] gap-4 lg:gap-0">
+            <div className="flex flex-col md:flex-row justify-center items-center md:space-x-8 lg:space-x-12 space-y-20 md:space-y-0 p-4 sm:p-8 lg:p-8">
             <CoffeeCard
                 title="Americano"
                 description="Dark, sleek depth"
@@ -44,12 +45,29 @@ export function Cart(){
                 ]}
 
             />
+             <CoffeeCard
+                title="Iced Coffee"
+                description="Pure Taste with Cold"
+                price="$1.50"
+                imageUrl="/icons/cup.png"
+                iconUrl={[
+                    {
+                    default: "/icons/heart.png",
+                    active: "/icons/heart-filled.png",
+                    },
+                    {
+                    default: "/icons/cart.png",
+                    active: "/icons/cart-filled.png",
+                    },
+                ]}
+
+            />
 
         </div>
 
-        <div className="p-8 space-y-6">
-            <h1 className="text-3xl font-bold text-coffee font-sans mb-10">Discover a world of flavor in every cup</h1>
-            <p className="text-xl font-semibold text-coffee font-sans">Savor the aroma that awakens your senses, crafted with care and passion for an unforgettable experience.</p>
+        <div className="p-4 sm:p-8 lg:p-8 space-y-4 sm:space-y-6 flex flex-col justify-center">
+            <h1 className="text-2xl sm:text-3xl font-bold text-coffee font-sans">Discover a world of flavor in every cup</h1>
+            <p className="text-base sm:text-lg lg:text-xl font-semibold text-coffee font-sans leading-relaxed">Savor the aroma that awakens your senses, crafted with care and passion for an unforgettable experience.</p>
             <Button text="Learn More" height="48px" width="128px" variant="gradient"/>
         </div>
         </div>

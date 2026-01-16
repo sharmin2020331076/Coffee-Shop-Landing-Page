@@ -1,53 +1,91 @@
-import Button from "../components/Button";
+import Button from "../components/Button"
+import { useScrollAnimation } from "../hooks/useScrollAnimation";
 
 export function Footer(){
+    const { ref: headingRef, isVisible: headingVisible } = useScrollAnimation();
+    const { ref: cardsRef, isVisible: cardsVisible } = useScrollAnimation();
+    const { ref: ctaRef, isVisible: ctaVisible } = useScrollAnimation();
     return <>
-        <div>
-            <div className="flex justify-between p-8 lg:p-16">
-                <div className="">
-                    <p className="text-xs text-white font-bold">LEST'S TALK</p>
-                <   h1 className="text-2xl text-coffee font-bold">Want to Reserve a Table?</h1>
-                </div>
-                 <div>
-                    <Button text="Contact Now" height="48px" width="164px" variant="solid"/>
-                </div>
-
-               
+        {/* Why Are We Different Section */}
+        <div className="w-full py-16 sm:py-20 lg:py-24 px-4 sm:px-8 lg:px-16">
+            {/* Heading */}
+            <div ref={headingRef} className={`${headingVisible ? 'animate-fade-in-down' : 'opacity-0'}`}>
+                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center text-coffee mb-4">Why are we different?</h2>
+                
+                {/* Subtitle */}
+                <p className="text-center text-lg sm:text-xl text-[#7e2807] font-bold mb-12 sm:mb-16">We don't just make your coffee, we make your day!</p>
             </div>
-             <div className=" pl-8 pr-8 lg:pr-16 lg:pl-16">
-                  <hr className="border-1 border-amber-800 w-full" />
-                </div>
             
-
-            <div className="grid grid-cols-[70%_30%]">
-                    <div className="p-8 lg:p-16">
-                        <p className="text-sm font-semibold text-coffee">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore corporis dolor illum delectus, eos quo odio saepe, magnam est earum quae accusamus dolorem debitis quas libero natus ea facilis excepturi, enim in? Fuga voluptatum provident iste eligendi perferendis! Omnis eveniet repellendus aliquid asperiores impedit minima delectus cupiditate suscipit sed adipisci laborum ea accusamus neque iusto consequatur rem vero nulla laudantium distinctio voluptates aliquam eius, obcaecati dolor incidunt! Dolorum doloribus aperiam asperiores porro accusamus cum dignissimos. Voluptates at placeat fugiat, iste illum nisi, voluptatibus libero ipsum natus architecto, inventore iusto culpa fuga rem nemo quisquam cupiditate blanditiis? Quisquam delectus consectetur est.</p>
+            {/* Feature Cards */}
+            <div ref={cardsRef} className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 mb-12 sm:mb-16`}>
+                {/* Supreme Beans Card */}
+                <div className={`bg-yellow-100 rounded-2xl sm:rounded-3xl p-4 sm:p-6 lg:p-8 text-center hover:shadow-lg hover:scale-105 transition-all duration-300 ${cardsVisible ? 'animate-fade-in-up stagger-1' : 'opacity-0'}`}>
+                    <div className="mb-3 sm:mb-4 flex justify-center">
+                        <img src="/photo/beans.png" alt="Supreme Beans" className="w-20 h-20 sm:w-24 sm:h-24 lg:w-28 lg:h-28 object-cover rounded-lg"/>
                     </div>
+                    <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-coffee mb-2">Supreme Beans</h3>
+                    <p className="text-xs sm:text-sm lg:text-base text-gray-600">Beans that provides great taste</p>
+                </div>
+                
+                {/* High Quality Card */}
+                <div className={`bg-yellow-100 rounded-2xl sm:rounded-3xl p-4 sm:p-6 lg:p-8 text-center hover:shadow-lg hover:scale-105 transition-all duration-300 ${cardsVisible ? 'animate-fade-in-up stagger-2' : 'opacity-0'}`}>
+                    <div className="mb-3 sm:mb-4 flex justify-center">
+                        <svg className="w-20 h-20 sm:w-24 sm:h-24 lg:w-28 lg:h-28 text-coffee" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                    </div>
+                    <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-coffee mb-2">High Quality</h3>
+                    <p className="text-xs sm:text-sm lg:text-base text-gray-600">We provide the highest quality</p>
+                </div>
+                
+                {/* Extraordinary Card */}
+                <div className={`bg-yellow-100 rounded-2xl sm:rounded-3xl p-4 sm:p-6 lg:p-8 text-center hover:shadow-lg hover:scale-105 transition-all duration-300 ${cardsVisible ? 'animate-fade-in-up stagger-3' : 'opacity-0'}`}>
+                    <div className="mb-3 sm:mb-4 flex justify-center">
+                        <img src="/photo/coffee-cup.png" alt="Extraordinary" className="w-20 h-20 sm:w-24 sm:h-24 lg:w-28 lg:h-28 object-cover rounded-lg"/>
+                    </div>
+                    <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-coffee mb-2">Extraordinary</h3>
+                    <p className="text-xs sm:text-sm lg:text-base text-gray-600">Coffee like you have never tasted</p>
+                </div>
+                
+                {/* Affordable Price Card */}
+                <div className={`bg-yellow-100 rounded-2xl sm:rounded-3xl p-4 sm:p-6 lg:p-8 text-center hover:shadow-lg hover:scale-105 transition-all duration-300 ${cardsVisible ? 'animate-fade-in-up stagger-4' : 'opacity-0'}`}>
+                    <div className="mb-3 sm:mb-4 flex justify-center">
+                        <img src="/photo/affordable.png" alt="Affordable Price" className="w-20 h-20 sm:w-24 sm:h-24 lg:w-28 lg:h-28 object-cover rounded-lg"/>
+                    </div>
+                    <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-coffee mb-2">Affordable Price</h3>
+                    <p className="text-xs sm:text-sm lg:text-base text-gray-600">Our Coffee prices are easy to afford</p>
+                </div>
             </div>
             
+            {/* CTA Section */}
+            <div ref={ctaRef} className={`flex flex-col items-center justify-center gap-4 sm:gap-6 ${ctaVisible ? 'animate-fade-in-up' : 'opacity-0'}`}>
+                <p className="text-[#7e2807] font-bold text-lg sm:text-xl">Great ideas start with great coffee. Lets help you achieve that</p>
+                <h3 className="text-3xl sm:text-4xl font-bold text-coffee">Get started today.</h3>
+                <Button text="Join Us" height="48px" width="128px" variant="gradient"/>
+            </div>
         </div>
 
-        <div className="flex flex-wrap justify-between p-8 lg:p-16">
-            <div className="pl-4">
+        <div className="flex flex-col sm:flex-row flex-wrap justify-between gap-6 sm:gap-8 p-4 sm:p-8 lg:p-16">
+            <div className="">
             <div className="flex space-x-2">
-                <h1 className="font-bold text-2xl text-white">Flavored</h1>
-                <img src="/icons/favicon.png" alt="Logo" className="w-7 h-7 filter invert brightness-0"/>
+                <h1 className="font-bold text-xl sm:text-2xl text-[#7e2807] ">Flavored</h1>
+                <img src="/icons/favicon.png" alt="Logo" className="w-6 h-6 sm:w-7 sm:h-7 filter invert brightness-0"/>
             </div>
-            <p className="text-white font-semibold text-sm">Wake up to something special</p>
-            </div>
-            <div>
-                <p className="text-2xl text-coffee font-bold">Our Services</p>
-                <p className="">Pricing</p>
-                <p className="">Tracking</p>
-                <p className="">Report a Bag</p>
-                <p className="">Terms of Services</p>
+            <p className="text-[#7e2807] font-semibold text-xs sm:text-sm">Wake up to something special</p>
             </div>
             <div>
-                <p className="text-2xl text-coffee font-bold">Our Comapny</p>
-                <p className="">Pricing</p>
-                <p className="">Tracking</p>
-                <p className="">Report a Bag</p>
-                <p className="">Terms of Services</p>
+                <p className="text-lg sm:text-2xl text-coffee font-bold">Our Services</p>
+                <p className="text-xs sm:text-sm text-coffee">Pricing</p>
+                <p className="text-xs sm:text-sm text-coffee">Tracking</p>
+                <p className="text-xs sm:text-sm text-coffee">Report a Bag</p>
+                <p className="text-xs sm:text-sm text-coffee">Terms of Services</p>
+            </div>
+            <div>
+                <p className="text-lg sm:text-2xl text-coffee font-bold">Our Company</p>
+                <p className="text-xs sm:text-sm text-coffee">Pricing</p>
+                <p className="text-xs sm:text-sm text-coffee">Tracking</p>
+                <p className="text-xs sm:text-sm text-coffee">Report a Bag</p>
+                <p className="text-xs sm:text-sm text-coffee">Terms of Services</p>
             </div>
             <div>
                 <p className="text-2xl text-coffee font-bold">Address</p>
