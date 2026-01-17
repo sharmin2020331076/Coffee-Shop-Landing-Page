@@ -1,7 +1,7 @@
 import { Navbar } from "./components/Navbar";
-import { Mobile } from "./pages/Mobile";
+import { Menu } from "./pages/Menu";
 import { Cappuccino } from "./pages/Cappuccino";
-import { Cart } from "./pages/Cart";
+import { Top_items } from "./pages/Top_items";
 import { Footer } from "./pages/Footer";
 import { Hero } from "./pages/Hero";
 import { useEffect } from "react";
@@ -28,15 +28,15 @@ function App(){
   return(
 
       <main className="w-full min-h-screen">
-        <div className="fixed inset-0 w-full h-screen bg-[url('/bgs/bg88.jpg')] bg-cover bg-center bg-fixed bg-no-repeat -z-10"/>
+        <div className="fixed inset-0 w-full h-screen bg-[url('/bgs/bg09.jpg')] bg-cover bg-center bg-fixed bg-no-repeat -z-10"/>
         <div className="w-full">
         <Navbar/>
 
         <div className="w-full min-h-screen bg-yellow-400/10 backdrop-blur-2xl">
         <Hero/>
-        <Cart/>
+        <Top_items/>
         <Cappuccino/>
-        <Mobile/>
+        <Menu/>
         <Footer/>
         </div>
         </div>

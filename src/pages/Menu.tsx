@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export function Mobile(){
+export function Menu(){
     const [activeFilter, setActiveFilter] = useState("All");
 
     const products = {
@@ -52,7 +52,7 @@ export function Mobile(){
                         className={`px-4 sm:px-6 py-2 sm:py-3 rounded-full font-semibold transition-all ${
                             activeFilter === filter
                                 ? "bg-coffee text-[#f1a437] border-2 border-coffee"
-                                : "bg-white text-coffee border-2 border-coffee"
+                                : "bg-amber-200 text-coffee border-2 border-coffee"
                         }`}
                     >
                         {filter}
@@ -63,7 +63,7 @@ export function Mobile(){
             {/* Product Cards Grid */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
                 {products[activeFilter as keyof typeof products].map((product) => (
-                    <div key={product.id} className="bg-white/50 backdrop-blur-3xl rounded-lg overflow-hidden hover:shadow-lg transition-shadow">
+                    <div key={product.id} className="bg-white/50 backdrop-blur-3xl rounded-lg overflow-hidden ring-0 hover:ring-amber-500 transition-all duration-300">
                         {/* Product Image */}
                         <div className="relative overflow-hidden h-48 sm:h-56">
                             <img
@@ -91,14 +91,14 @@ export function Mobile(){
                             </div>
 
 
-                            <div  className="flex flex-col items-end">
+                            <div  className="flex flex-col items-end gap-4">
                                 {/* Price Text */}
                             <span className="text-[#f1a437] font-semibold text-sm sm:text-base mb-2">
                                     ${product.price.toFixed(2)}
                                 </span>
                                 {/* Cart Icon */}
-                                <span className="mb-3">
-                                    <img src="/icons/cart.png" alt="Cart" height="20" width="20"/>
+                                <span className="mb-3 hover:scale-110 transition-transform cursor-pointer">
+                                    <img src="/icons/cart.png" alt="Cart" height="23" width="23"/>
                                 </span>
                             </div>
 

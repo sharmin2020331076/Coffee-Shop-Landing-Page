@@ -2,7 +2,7 @@ import Button from "../components/Button";
 import { CoffeeCard } from "../components/CoffeeCard";
 
 
-export function Cart(){
+export function Top_items(){
     return(
         <div className="w-full min-h-screen space-y-15">
             <div className=" w-full px-4 sm:px-8 lg:px-16 py-8 sm:py-12 flex flex-col items-center justify-center text-center">
