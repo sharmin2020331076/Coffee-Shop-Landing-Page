@@ -14,11 +14,11 @@ export function Navbar() {
             </div>
 
             <div className="flex space-x-6 lg:space-x-10 items-center">
-                <ul className="hidden lg:flex space-x-8 lg:space-x-10 text-coffee font-bold text-sm cursor-pointer">
-                    <li>Home</li>
-                    <li>Coffee Menu</li>
-                    <li>About Us</li>
-                    <li>Contact US</li>
+                <ul className="hidden lg:flex space-x-8 lg:space-x-10 text-coffee font-bold text-md cursor-pointer">
+                    <li className="hover:scale-105">Home</li>
+                    <li className="hover:scale-105">Coffee Menu</li>
+                    <li className="hover:scale-105">About Us</li>
+                    <li className="hover:scale-105">Contact US</li>
                 </ul>
 
                 <Button text="Coffee Shop" height="48px" width="120px" background="var(--color-coffee)" variant="solid"/>

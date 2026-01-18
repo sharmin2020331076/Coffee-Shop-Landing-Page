@@ -52,7 +52,7 @@ export function Menu(){
                         className={`px-4 sm:px-6 py-2 sm:py-3 rounded-full font-semibold transition-all ${
                             activeFilter === filter
                                 ? "bg-coffee text-[#f1a437] border-2 border-coffee"
-                                : "bg-amber-200 text-coffee border-2 border-coffee"
+                                : "bg-amber-100 text-coffee border-2 border-coffee"
                         }`}
                     >
                         {filter}
@@ -93,7 +93,7 @@ export function Menu(){
 
                             <div  className="flex flex-col items-end gap-4">
                                 {/* Price Text */}
-                            <span className="text-[#f1a437] font-semibold text-sm sm:text-base mb-2">
+                            <span className="text-[#e68600] font-bold text-sm sm:text-base mb-2">
                                     ${product.price.toFixed(2)}
                                 </span>
                                 {/* Cart Icon */}

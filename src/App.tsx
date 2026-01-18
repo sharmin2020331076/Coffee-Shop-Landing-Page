@@ -2,10 +2,11 @@ import { Navbar } from "./components/Navbar";
 import { Menu } from "./pages/Menu";
 import { Cappuccino } from "./pages/Cappuccino";
 import { Top_items } from "./pages/Top_items";
-import { Footer } from "./pages/Footer";
+import { Choose } from "./pages/Choose";
 import { Hero } from "./pages/Hero";
 import { useEffect } from "react";
 import Lenis  from "lenis";
+import { Footer } from "./components/Footer";
 
 
 function App(){
@@ -37,6 +38,7 @@ function App(){
         <Top_items/>
         <Cappuccino/>
         <Menu/>
+        <Choose/>
         <Footer/>
         </div>
         </div>

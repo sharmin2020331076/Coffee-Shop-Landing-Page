@@ -1,7 +1,7 @@
 import Button from "../components/Button"
 import { useScrollAnimation } from "../hooks/useScrollAnimation";
 
-export function Footer(){
+export function Choose(){
     const { ref: headingRef, isVisible: headingVisible } = useScrollAnimation();
     const { ref: cardsRef, isVisible: cardsVisible } = useScrollAnimation();
     const { ref: ctaRef, isVisible: ctaVisible } = useScrollAnimation();
@@ -65,36 +65,6 @@ export function Footer(){
             </div>
         </div>
 
-        <div className="flex flex-col sm:flex-row flex-wrap justify-between gap-6 sm:gap-8 p-4 sm:p-8 lg:p-16">
-            <div className="">
-            <div className="flex space-x-2">
-                <h1 className="font-bold text-xl sm:text-2xl text-[#7e2807] ">Flavored</h1>
-                <img src="/icons/favicon.png" alt="Logo" className="w-6 h-6 sm:w-7 sm:h-7 filter invert brightness-0"/>
-            </div>
-            <p className="text-[#7e2807] font-semibold text-xs sm:text-sm">Wake up to something special</p>
-            </div>
-            <div>
-                <p className="text-lg sm:text-2xl text-coffee font-bold">Our Services</p>
-                <p className="text-xs sm:text-sm text-coffee">Pricing</p>
-                <p className="text-xs sm:text-sm text-coffee">Tracking</p>
-                <p className="text-xs sm:text-sm text-coffee">Report a Bag</p>
-                <p className="text-xs sm:text-sm text-coffee">Terms of Services</p>
-            </div>
-            <div>
-                <p className="text-lg sm:text-2xl text-coffee font-bold">Our Company</p>
-                <p className="text-xs sm:text-sm text-coffee">Pricing</p>
-                <p className="text-xs sm:text-sm text-coffee">Tracking</p>
-                <p className="text-xs sm:text-sm text-coffee">Report a Bag</p>
-                <p className="text-xs sm:text-sm text-coffee">Terms of Services</p>
-            </div>
-            <div>
-                <p className="text-2xl text-coffee font-bold">Address</p>
-                <p className="">Pricing</p>
-                <p className="">Tracking</p>
-                <p className="">Report a Bag</p>
-                <p className="">Terms of Services</p>
-            </div>
-        </div>
 </>
         
     
