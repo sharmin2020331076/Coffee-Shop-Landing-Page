@@ -45,7 +45,7 @@ export function Hero(){
                 <div className="space-y-2">
                     <p className="text-lg md:text-xl lg:text-3xl text-coffee font-sans italic leading-tight">Welcome to ...</p>
                    <div className="flex items-center space-x-6">
-                     <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl text-coffee font-bold font-sans leading-tight">Coffinest</h1>
+                     <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl text-coffee font-bold font-sans leading-tight">CoffiNest</h1>
                     <img src="/icons/expresso.png" alt="Logo" className="w-6 h-6 sm:w-15 sm:h-15"/>
                    </div>
                     <h1 className="text-lg md:text-xl lg:text-3xl text-coffee font-sans italic leading-tight">Brewed To Perfection, Served With Love!</h1>
