@@ -29,17 +29,25 @@ function App(){
   return(
 
       <main className="w-full min-h-screen">
-        <div className="fixed inset-0 w-full h-screen bg-[url('/bgs/bg09.jpg')] bg-cover bg-center bg-fixed bg-no-repeat -z-10"/>
+        <div className="fixed inset-0 w-full h-screen bg-[url('/bgs/new_bg.png')] bg-cover bg-center bg-no-repeat -z-10"/>
         <div className="w-full">
         <Navbar/>
 
-        <div className="w-full min-h-screen bg-yellow-400/10 backdrop-blur-2xl">
-        <Hero/>
+        <div className="w-full min-h-[100dvh] bg-yellow-950/20">
+        <section id="home">
+          <Hero/>
+        </section>
         <Top_items/>
-        <Cappuccino/>
-        <Menu/>
+        <section id="about">
+          <Cappuccino/>
+        </section>
+        <section id="menu">
+          <Menu/>
+        </section>
         <Choose/>
-        <Footer/>
+        <section id="contact">
+          <Footer/>
+        </section>
         </div>
         </div>
       </main>

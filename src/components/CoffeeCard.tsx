@@ -24,31 +24,31 @@ export function CoffeeCard({
   };
 
   return (
-    <div className="relative bg-white/50 rounded-4xl pt-16 sm:pt-20 pb-12 sm:pb-14 px-3 sm:px-4 w-full sm:w-72 mx-auto shadow-2xl">
+    <div className="relative bg-white/50 rounded-4xl pt-16 sm:pt-20 md:pt-24 pb-8 sm:pb-12 md:pb-14 px-4 w-full max-w-[280px] sm:max-w-xs md:max-w-sm mx-auto shadow-2xl transition-all duration-300">
       {/* Overlapping Image */}
       <img
         src={imageUrl}
-         className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-40 sm:w-48 md:w-56 lg:w-64 h-auto overflow-visible hover:scale-110 transition"
+         className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-32 sm:w-40 md:w-48 lg:w-56 h-auto overflow-visible hover:scale-110 transition duration-500 ease-in-out"
       />
 
       {/* Card Content */}
-      <h3 className="text-base sm:text-lg font-sans font-bold text-center text-coffee mt-4 sm:mt-6">{title}</h3>
-      <p className="text-xs sm:text-sm text-center text-coffee mt-2">{description}</p>
+      <h3 className="text-sm sm:text-base md:text-lg lg:text-xl font-sans font-bold text-center text-coffee mt-6 sm:mt-8">{title}</h3>
+      <p className="text-xs sm:text-sm md:text-base text-center text-coffee mt-2">{description}</p>
 
       {/* Toggleable PNG Icons */}
       {iconUrl && iconUrl.length > 0 && (
-        <div className="flex justify-center gap-3 sm:gap-4 mt-3 sm:mt-4">
+        <div className="flex justify-center gap-3 sm:gap-4 mt-4 sm:mt-6">
           {iconUrl.map((iconPair, i) => (
             <button
               key={i}
               onClick={() => toggleIcon(i)}
               className="flex items-center justify-center hover:scale-110 transition"
             >
-              <div className="flex items-center justify-center bg-white/50 rounded-xl shadow-2xl w-9 h-9 sm:w-10 sm:h-10 border-2 border-coffee">
+              <div className="flex items-center justify-center bg-white/50 rounded-xl shadow-2xl w-8 h-8 sm:w-10 sm:h-10 border-2 border-coffee">
                 <img
                 src={activeIcons[i] ? iconPair.active : iconPair.default}
-                alt="icon-${i}"
-                className="w-5 h-5 sm:w-6 sm:h-6 cursor-pointer"
+                alt={`icon-${i}`}
+                className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 cursor-pointer"
               />
               </div>
             </button>
@@ -61,7 +61,7 @@ export function CoffeeCard({
 
       {/* Bottom Badge */}
       <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2">
-        <span className="bg-coffee text-white text-xs sm:text-sm px-3 py-1 rounded-xl shadow-md">
+        <span className="bg-coffee text-white text-xs sm:text-sm md:text-base px-4 py-1.5 rounded-xl shadow-md whitespace-nowrap">
           {price}
         </span>
       </div>

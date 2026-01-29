@@ -62,7 +62,7 @@ export function Choose(){
                 <p className="text-[#7e2807] font-bold text-lg sm:text-xl">Great ideas start with great coffee. Lets help you achieve that</p>
                 <h3 className="text-3xl sm:text-4xl font-bold text-coffee">Get started today.</h3>
                 <Button text="Join Us" height="48px" width="128px" variant="gradient"/>
-            </div>
+            </div>  
         </div>
 
 </>

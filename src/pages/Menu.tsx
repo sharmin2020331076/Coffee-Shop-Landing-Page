@@ -1,7 +1,26 @@
 import { useState } from "react";
+import { ProductModal } from "../components/ProductModal";
+
+// Define the Product interface locally or import it if shared
+interface Product {
+    id: number;
+    image: string;
+    name: string;
+    rating: number;
+    price: number;
+}
 
 export function Menu(){
     const [activeFilter, setActiveFilter] = useState("All");
+    const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
+
+    const openModal = (product: Product) => {
+        setSelectedProduct(product);
+    };
+
+    const closeModal = () => {
+        setSelectedProduct(null);
+    };
 
     const products = {
         All: [
@@ -39,7 +58,7 @@ export function Menu(){
     };
 
     return (
-        <div className="w-full py-12 px-4 sm:px-8">
+        <div className="w-full py-12 px-4 sm:px-8 relative">
             {/* Top Products Heading */}
             <h2 className="text-3xl sm:text-4xl font-bold text-coffee text-center mb-8">All The Items We Serve</h2>
 
@@ -63,7 +82,11 @@ export function Menu(){
             {/* Product Cards Grid */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
                 {products[activeFilter as keyof typeof products].map((product) => (
-                    <div key={product.id} className="bg-white/50 backdrop-blur-3xl rounded-lg overflow-hidden ring-0 hover:ring-amber-500 transition-all duration-300">
+                    <div 
+                        key={product.id} 
+                        onClick={() => openModal(product)}
+                        className="bg-white/50 backdrop-blur-3xl rounded-lg overflow-hidden ring-0 hover:ring-amber-500 transition-all duration-300 cursor-pointer"
+                    >
                         {/* Product Image */}
                         <div className="relative overflow-hidden h-48 sm:h-56">
                             <img
@@ -79,7 +102,7 @@ export function Menu(){
                             <div className="flex flex-col justify-start">
                                 <div className="flex gap-1 mb-2">
                                 {[...Array(product.rating)].map((_, i) => (
-                                    <svg key={i} className="w-4 h-4 fill-[#fb9200]" viewBox="0 0 20 20">
+                                    <svg key={i} className="w-4 h-4 sm:w-5 sm:h-5 fill-[#fb9200]" viewBox="0 0 20 20">
                                         <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
                                     </svg>
                                 ))}
@@ -98,7 +121,7 @@ export function Menu(){
                                 </span>
                                 {/* Cart Icon */}
                                 <span className="mb-3 hover:scale-110 transition-transform cursor-pointer">
-                                    <img src="/icons/cart.png" alt="Cart" height="23" width="23"/>
+                                    <img src="/icons/cart.png" alt="Cart" className="w-5 h-5 sm:w-6 sm:h-6"/>
                                 </span>
                             </div>
 
@@ -107,6 +130,13 @@ export function Menu(){
                     </div>
                 ))}
             </div>
+
+            {/* Details Modal */}
+            <ProductModal 
+                product={selectedProduct} 
+                isOpen={!!selectedProduct} 
+                onClose={closeModal} 
+            />
         </div>
     );
 }
