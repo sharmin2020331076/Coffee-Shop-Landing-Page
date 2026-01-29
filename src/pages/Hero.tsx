@@ -1,5 +1,7 @@
-import{ useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Button from "../components/Button";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
 
 export function Hero(){
 

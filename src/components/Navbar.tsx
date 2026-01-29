@@ -1,35 +1,37 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import Button from "./Button";
-import { motion, AnimatePresence } from "framer-motion";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
 
 export function Navbar() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const menuRef = useRef<HTMLDivElement>(null);
+    const container = useRef<HTMLDivElement>(null);
+    const tl = useRef<gsap.core.Timeline | null>(null);
 
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
     };
 
-    const menuVariants = {
-        closed: {
-            x: "100%",
-            transition: {
-                type: "spring",
-                stiffness: 300,
-                damping: 30
-            }
-        },
-        open: {
-            x: 0,
-            transition: {
-                type: "spring",
-                stiffness: 300,
-                damping: 30
-            }
+    useGSAP(() => {
+        gsap.set(menuRef.current, { x: "100%" });
+
+        tl.current = gsap.timeline({ paused: true })
+            .to(menuRef.current, { x: "0%", duration: 0.5, ease: "power3.inOut" })
+            .from(".menu-item", { x: 50, opacity: 0, stagger: 0.1, duration: 0.4, ease: "power2.out" }, "-=0.3");
+
+    }, { scope: container });
+
+    useEffect(() => {
+        if (isMenuOpen) {
+            tl.current?.play();
+        } else {
+            tl.current?.reverse();
         }
-    };
+    }, [isMenuOpen]);
 
     return (
-        <nav className="fixed w-full h-20 backdrop-blur-3xl px-4 sm:px-8 lg:px-16 py-4 z-50 flex justify-between items-center transition-all duration-300">
+        <nav ref={container} className="fixed w-full h-20 backdrop-blur-3xl px-4 sm:px-8 lg:px-16 py-4 z-50 flex justify-between items-center transition-all duration-300">
             {/* Logo Section */}
             <div className="flex flex-col space-y-0 z-50">
                 <div className="flex space-x-1 items-center cursor-pointer">
@@ -43,14 +45,12 @@ export function Navbar() {
             <div className="hidden lg:flex space-x-10 items-center">
                 <ul className="flex space-x-10 text-coffee font-bold text-md cursor-pointer">
                     {["Home", "Coffee Menu", "About Us", "Contact US"].map((item, index) => (
-                        <motion.li
+                        <li
                             key={index}
-                            whileHover={{ scale: 1.05 }}
-                            whileTap={{ scale: 0.95 }}
-                            className="transition-colors"
+                            className="hover:scale-105 transition-transform hover:text-[#e68600]"
                         >
                             <a href={`#${item.toLowerCase().replace(" ", "").replace("us", "")}`}>{item}</a>
-                        </motion.li>
+                        </li>
                     ))}
                 </ul>
                 <Button text="Coffee Shop" height="48px" width="120px" background="var(--color-coffee)" variant="solid" />
@@ -66,53 +66,45 @@ export function Navbar() {
             </div>
 
             {/* Mobile Menu Overlay - Modern Glassmorphism Side Sheet */}
-            <AnimatePresence>
-                {isMenuOpen && (
-                    <>
-                        <motion.div
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            exit={{ opacity: 0 }}
-                            onClick={toggleMenu}
-                            className="fixed inset-0 bg-black/20 backdrop-blur-sm z-40"
-                        />
-                        <motion.div
-                            variants={menuVariants}
-                            initial="closed"
-                            animate="open"
-                            exit="closed"
-                            className="fixed top-0 right-0 w-[75%] max-w-[300px] h-screen bg-yellow-50/90 backdrop-blur-3xl shadow-2xl z-50 flex flex-col border-l border-white/20"
-                        >
-                            {/* Close Button inside Drawer */}
-                            <div className="absolute top-6 right-6 z-50">
-                                <button onClick={toggleMenu} className="p-2 bg-coffee/10 rounded-full hover:bg-coffee/20 transition-colors">
-                                    <svg className="w-6 h-6 text-coffee" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                                    </svg>
-                                </button>
-                            </div>
+            {/* Backdrop */}
+            {isMenuOpen && (
+                <div
+                    onClick={toggleMenu}
+                    className="fixed inset-0 bg-black/20 backdrop-blur-sm z-40 lg:hidden"
+                ></div>
+            )}
 
-                            <div className="flex flex-col space-y-8 p-8 items-start mt-12">
-                                <ul className="flex flex-col space-y-6 text-coffee font-bold text-2xl font-sans text-left w-full">
-                                    {["Home", "Menu", "About", "Contact"].map((item, idx) => (
-                                        <motion.li
-                                            key={idx}
-                                            whileHover={{ x: 10 }}
-                                            className="border-b border-coffee/10 pb-2 w-full cursor-pointer"
-                                            onClick={toggleMenu}
-                                        >
-                                            <a href={`#${item.toLowerCase()}`}>{item === "Menu" ? "Coffee Menu" : item === "Contact" ? "Contact US" : item === "About" ? "About Us" : item}</a>
-                                        </motion.li>
-                                    ))}
-                                </ul>
-                                <div className="pt-4 w-full">
-                                    <Button text="Coffee Shop" height="56px" width="100%" background="var(--color-coffee)" variant="solid" />
-                                </div>
-                            </div>
-                        </motion.div>
-                    </>
-                )}
-            </AnimatePresence>
+            {/* Drawer */}
+            <div
+                ref={menuRef}
+                className="fixed top-0 right-0 w-[75%] max-w-[300px] h-screen bg-yellow-50/90 backdrop-blur-3xl shadow-2xl z-50 flex flex-col border-l border-white/20 lg:hidden"
+            >
+                {/* Close Button inside Drawer */}
+                <div className="absolute top-6 right-6 z-50">
+                    <button onClick={toggleMenu} className="p-2 bg-coffee/10 rounded-full hover:bg-coffee/20 transition-colors">
+                        <svg className="w-6 h-6 text-coffee" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+
+                <div className="flex flex-col space-y-8 p-8 items-start mt-12">
+                    <ul className="flex flex-col space-y-6 text-coffee font-bold text-2xl font-sans text-left w-full">
+                        {["Home", "Menu", "About", "Contact"].map((item, idx) => (
+                            <li
+                                key={idx}
+                                onClick={toggleMenu}
+                                className="menu-item border-b border-coffee/10 pb-2 w-full cursor-pointer"
+                            >
+                                <a href={`#${item.toLowerCase()}`}>{item === "Menu" ? "Coffee Menu" : item === "Contact" ? "Contact US" : item === "About" ? "About Us" : item}</a>
+                            </li>
+                        ))}
+                    </ul>
+                    <div className="menu-item pt-4 w-full">
+                        <Button text="Coffee Shop" height="56px" width="100%" background="var(--color-coffee)" variant="solid" />
+                    </div>
+                </div>
+            </div>
         </nav>
     )
 }
