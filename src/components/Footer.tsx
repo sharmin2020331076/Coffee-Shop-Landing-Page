@@ -1,7 +1,7 @@
 
 export function Footer(){
     return<>
-    <div className="p-16">
+    <div className="p-4 sm:p-8 lg:p-16">
     <div className="bg-coffee rounded-2xl backdrop-blur-lg flex flex-col justify-between">
             
             <div className="flex justify-between px-8 py-12 gap-8 sm:gap-16 lg:gap-32 flex-wrap">

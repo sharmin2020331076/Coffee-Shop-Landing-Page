@@ -4,7 +4,8 @@ import { CoffeeCard } from "../components/CoffeeCard";
 
 export function Top_items(){
     return(
-        <div className="w-full min-h-screen space-y-15">
+        <div className="px-4 sm:px-8 lg:px-16">
+            <div className="w-full min-h-screen space-y-16">
             <div className=" w-full px-4 sm:px-8 lg:px-16 py-8 sm:py-12 flex flex-col items-center justify-center text-center">
                 <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-coffee font-sherif">TOP CATEGORIES</h2>
                 <p className="text-base sm:text-lg lg:text-xl text-coffee font-sans mt-2">Eplore The Recent Most Brought Drinks This Week</p>
@@ -69,6 +70,7 @@ export function Top_items(){
             <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-coffee font-sans">Discover a world of flavor in every cup</h1>
             <p className="text-base sm:text-lg lg:text-xl font-semibold text-coffee font-sans leading-relaxed">Savor the aroma that awakens your senses, crafted with care and passion for an unforgettable experience.</p>
             <Button text="Learn More" height="48px" width="128px" variant="gradient"/>
+        </div>
         </div>
         </div>
         </div>

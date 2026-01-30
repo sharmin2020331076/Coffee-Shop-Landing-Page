@@ -4,6 +4,7 @@ import { Cappuccino } from "./pages/Cappuccino";
 import { Top_items } from "./pages/Top_items";
 import { Choose } from "./pages/Choose";
 import { Hero } from "./pages/Hero";
+import { CustomerReviews } from "./pages/CustomerReviews";
 import { useEffect } from "react";
 import Lenis  from "lenis";
 import { Footer } from "./components/Footer";
@@ -45,6 +46,7 @@ function App(){
           <Menu/>
         </section>
         <Choose/>
+        <CustomerReviews/>
         <section id="contact">
           <Footer/>
         </section>

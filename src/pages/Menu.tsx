@@ -58,7 +58,8 @@ export function Menu(){
     };
 
     return (
-        <div className="w-full py-12 px-4 sm:px-8 relative">
+        <div className="p-4 sm:p-8 lg:p-12">
+            <div className="w-full py-12 px-4 sm:px-8 relative">
             {/* Top Products Heading */}
             <h2 className="text-3xl sm:text-4xl font-bold text-coffee text-center mb-8">All The Items We Serve</h2>
 
@@ -137,6 +138,7 @@ export function Menu(){
                 isOpen={!!selectedProduct} 
                 onClose={closeModal} 
             />
+        </div>
         </div>
     );
 }
